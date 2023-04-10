@@ -79,6 +79,8 @@ int main(int argc, char *argv[]){
 
 
 	// Open output root file
+  std::stringstream stream;
+  stream <<  std::setw(6) << std::setfill('0') << runNum;
 	TFile* outputFile = TFile::Open( (TString)("./Hist_CORSIKA_" + stream.str() + ".root"), "RECREATE");
 	outputFile->cd();
 	ptc_XY_total->Write();

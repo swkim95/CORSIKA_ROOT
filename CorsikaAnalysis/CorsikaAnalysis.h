@@ -65,7 +65,7 @@ double calculateE(crsIO::TParticle* ptc) {
 TFile* getInputFile(std::string runNum) {
   std::stringstream stream;
 	stream << std::setw(6) << std::setfill('0') << runNum;
-	TString fileName = (TString) ("../run/out/DAT" + stream.str() +".root");
+	TString fileName = (TString) ("../../run/out/DAT" + stream.str() +".root");
 	std::cout << "Reading CORSIKA file : " << fileName << std::endl;
 	return TFile::Open(fileName, "Read");
 }

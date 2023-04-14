@@ -49,7 +49,7 @@ crsIO-clean:
 
 
 DirectROOT_Dict.cc: $(crsIO_Headers) DirectROOTLinkDef.h
-	rootcint -f $@ -c -I/home/swkim/corsika-77100/include $^
+	rootcint -f $@ -c -I../../include $^
 
 
 crsIO_Headers +=  TCherenkov.h TLongitudinal.h TParticle.h \

@@ -146,9 +146,9 @@ void TShower::AddEventEnd (const crs::MEventEnd &EventEnd) {
   nHadrons = EventEnd.GetWeightedHadrons ();
   nMuons = EventEnd.GetWeightedMuons ();
 
-  std::cout << "fNParticles : " << fNParticles << std::endl;
-  std::cout << "fNCherenkov : " << fNCherenkov << std::endl;
-  std::cout << "fNLong      : " << fNLong      << std::endl;
+  // std::cout << "fNParticles : " << fNParticles << std::endl;
+  // std::cout << "fNCherenkov : " << fNCherenkov << std::endl;
+  // std::cout << "fNLong      : " << fNLong      << std::endl;
   fParticles.Compress();
   fCherenkov.Compress();
   fLongitudinal.Compress();

@@ -19,7 +19,7 @@ source /cvmfs/sft.cern.ch/lcg/app/releases/ROOT/5.34.36/x86_64-centos7-gcc48-opt
 3. Inside `corsika-77100` directory, remove default `coast` directory by `rm -rf coast`
 4. Clone this package inside `corsika-77100` with name `coast` 
     - `git clone https://github.com/swkim95/CORSIKA_ROOT.git coast`
-5. Compile CORSIKA with ROOTOUT option (d2 option)
+5. Compile CORSIKA with ROOTOUT option (d2 option) using `./coconut`
 6. After compiling CORSIKA, run simulation (output file assumed to be produced under `/corsika-77100/run/out/`)
 7. Move to `/corsika-77100/coast/CorsikaAnalysis` directory, and compile analysis script using `source make_lib.sh` (Fix output ROOT path in CorsikaAnalysis.h before compiling it)
 8. CorsikaAnalysis.exe should be installed in `~/corsika-77100/coast/CorsikaAnalysis/`

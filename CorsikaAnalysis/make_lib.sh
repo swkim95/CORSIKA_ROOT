@@ -17,7 +17,8 @@ cd CorsikaROOT
 echo "Current DIR : ${PWD}"
 rootcint -f ROOT_Dictionary.cxx -c -I../../include -Wall -D_FILE_OFFSET_BITS=64 -Wl,--no-as-needed -fPIC -p TCherenkov.h TLongitudinal.h TParticle.h TRun.h TShower.h DirectROOTLinkDef.h
 
-g++ -shared -o lib_ROOT_Dict.so -Wall -D_FILE_OFFSET_BITS=64 -Wl,--no-as-needed -fPIC -I$ROOTSYS/include -I../../include ROOT_Dictionary.cxx TCherenkov.cc TLongitudinal.cc TParticle.cc TRun.cc TShower.cc `root-config --ldflags --libs`
+g++ -shared -o lib_ROOT_Dict.so -Wall -D_FILE_OFFSET_BITS=64 -Wl,--no-as-needed -fPIC -I$ROOTSYS/include -I../../include ROOT_Dictionary.cxx TCherenkov.cc TLongitudinal.cc TParticle.cc TRun.cc TShower.cc `root-config --cflags --ldflags --glibs --libs`
+# g++ -shared -o lib_CORSIKA_ROOT.so -Wall -D_FILE_OFFSET_BITS=64 -Wl,--no-as-needed -fPIC -I$ROOTSYS/include -I../../include TCherenkov.cc TLongitudinal.cc TParticle.cc TRun.cc TShower.cc `root-config --libs --glibs --cflags --ldflags`
 cd ../
 
 cd CorsikaAnalysis

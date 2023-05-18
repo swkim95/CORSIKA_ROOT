@@ -47,6 +47,7 @@ One can analyze Flat Ntuple file by running `./CorsikaFlatAnalysis.exe {RunNumbe
 - Ex) To make histogram ROOT file out of `Flat_CORSIKA_000001.root` created in same directory as CorsikaFlatAnalysis.exe, type `./CorsikaFlatAnalysis.exe 1`
 - This script will draw particle positions (in XY-plane), particle energy, PDGID, particle arrival time shower by shower, and plots of them in total.
 - This basically draw same script as CorsikaAnalysis.exe, but does not need CORSIKA ROOT dictionary, so this script can be ran in any other server with ROOT installed.
+- Also this is much faster than CorsikaAnalysis.exe
 
 ## read_entry.exe
 One can read # of particles in each shower by running `./read_entry.exe {RunNumber}`

@@ -23,16 +23,34 @@ source /cvmfs/sft.cern.ch/lcg/app/releases/ROOT/5.34.36/x86_64-centos7-gcc48-opt
 6. Compile CORSIKA with ROOTOUT option (d2 option) using `./coconut`
 7. After compiling CORSIKA, run simulation (output file assumed to be produced under `/corsika-77100/run/out/`)
 8. Move to `/corsika-77100/coast/CorsikaAnalysis` directory, fix CorsikaAnalysis.h `getInputFile` function to provide proper CORSIKA output ROOT file path.
-9. In `/corsika-77100/coast/CorsikaAnalysis` directory, compile analysis scripts using `source make_lib.sh`
-10. CorsikaAnalysis.exe, CorsikaToFlat.exe, AnalysisFlat.exe should be installed in `~/corsika-77100/coast/CorsikaAnalysis/`
-11. One can create ROOT file with histograms by running `./CorsikaAnalysis.exe {RunNumber}`
-    - Ex) To analyze `DAT000001.root` created under `~/corsika-77100/run/out/`, type `./CorsikaAnalysis.exe 1`
-    - This will take huge time if the number of particles in each shower gets too large
-12. One can create Flat Ntuple ROOT file with only necessary information for GEANT4 simulation in it by running `./CorsikaToFlat.exe {RunNumber}`
-    - Ex) To make flat Ntuple ROOT file of `DAT000001.root` created under `~/corsika-77100/run/out/`, type `./CorsikaToFlat.exe 1`
-    - The output file will contain each shower particle information in std::vector container
-13. 
+9. In `/corsika-77100/coast/CorsikaAnalysis` directory, compile analysis scripts using `source make_lib.sh` (after creating libraries, one can re-compile each analysis script by running `source compile_script.sh`)
+10. CorsikaAnalysis.exe, CorsikaToFlat.exe, CorsikaFlatAnalysis.exe, read_entry.exe should be installed in `~/corsika-77100/coast/CorsikaAnalysis/`
 
+# Description of each analysis script
+
+## CorsikaAnalysis.exe
+One can create ROOT file with histograms by running `./CorsikaAnalysis.exe {RunNumber}`
+- Ex) To analyze `DAT000001.root` created under `~/corsika-77100/run/out/`, type `./CorsikaAnalysis.exe 1`
+- This script will draw particle positions (in XY-plane), particle energy, PDGID, particle arrival time shower by shower, and plots of them in total.
+- This will take huge time if the number of particles in each shower gets too large
+
+## CorsikaToFlat.exe
+One can create Flat Ntuple ROOT file with only necessary information for GEANT4 simulation in it by running `./CorsikaToFlat.exe {RunNumber}`
+
+- Ex) To make flat Ntuple ROOT file of `DAT000001.root` created under `~/corsika-77100/run/out/`, type `./CorsikaToFlat.exe 1`
+- The output file will contain each shower particle information in std::vector container
+- This output can be used for GEANT4 sim using SHECRO package (DRC full sim with CORSIKA output)
+
+## CorsikaFlatAnalysis.exe
+One can analyze Flat Ntuple file by running `./CorsikaFlatAnalysis.exe {RunNumber}`
+
+- Ex) To make histogram ROOT file out of `Flat_CORSIKA_000001.root` created in same directory as CorsikaFlatAnalysis.exe, type `./CorsikaFlatAnalysis.exe 1`
+- This script will draw particle positions (in XY-plane), particle energy, PDGID, particle arrival time shower by shower, and plots of them in total.
+- This basically draw same script as CorsikaAnalysis.exe, but does not need CORSIKA ROOT dictionary, so this script can be ran in any other server with ROOT installed.
+
+## read_entry.exe
+One can read # of particles in each shower by running `./read_entry.exe {RunNumber}`
+- This macro read Flat Ntuple, so need to run CorsikaToFlat.exe before running this macro.
 
 # Caution
 

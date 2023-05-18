@@ -1,6 +1,6 @@
 #include "CorsikaAnalysis.h"
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
 	// Argument check
 	if (argc != 2) {
 		std::cout << "[Error] Wrong number of arguments" << std::endl;

@@ -92,9 +92,18 @@ int getPDGID(const crsIO::TParticle* aPtc) {
 }
 
 TFile* getInputFile(std::string runNum) {
-  std::stringstream stream;
+	std::stringstream stream;
 	stream << std::setw(6) << std::setfill('0') << runNum;
 	TString fileName = (TString) ("../../run/out/DAT" + stream.str() +".root"); // FIX HERE!! Provide proper input CORSIKA output file path
 	std::cout << "Reading CORSIKA file : " << fileName << std::endl;
-	return TFile::Open(fileName, "Read");
+	return TFile::Open(fileName, "READ");
+}
+
+
+TFile* getFlatInputFile(std::string runNum) {
+	std::stringstream stream;
+	stream << std::setw(6) << std::setfill('0') << runNum;
+	TString fileName = (TString) ("./Flat_CORSIKA_" + stream.str() +".root"); // FIX HERE!! Provide proper input CORSIKA output file path
+	std::cout << "Reading CORSIKA file : " << fileName << std::endl;
+	return TFile::Open(fileName, "READ");
 }
